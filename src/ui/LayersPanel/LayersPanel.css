@@ -1,0 +1,30 @@
+.layer-row {
+  display: flex;
+  gap: var(--space-1);
+  align-items: center;
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-row);
+}
+
+.layer-row:hover {
+  background: var(--fill-hover);
+}
+
+.layer-caret {
+  display: grid;
+  flex: none;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  place-items: center;
+  cursor: pointer;
+}
+
+.layer-empty {
+  margin: 0;
+  padding: var(--space-1) var(--space-2) var(--space-3);
+  color: var(--text-muted);
+}

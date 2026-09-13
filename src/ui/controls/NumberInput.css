@@ -1,0 +1,60 @@
+.number {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-row);
+  background: var(--fill-control);
+}
+
+.number:focus-within {
+  border-color: var(--accent-line);
+}
+
+.number-field {
+  width: 100%;
+  min-width: 0;
+  padding: 4px var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--text-primary);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.number-field:focus {
+  outline: none;
+}
+
+.number-steps {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  border-left: 1px solid var(--border);
+}
+
+.number-steps button {
+  display: grid;
+  width: 18px;
+  height: 50%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  place-items: center;
+  cursor: pointer;
+}
+
+.number-steps button:hover:not(:disabled) {
+  background: var(--fill-hover-raised);
+  color: var(--text-primary);
+}
+
+.number-steps button:disabled {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+.number-steps svg {
+  width: 8px;
+}

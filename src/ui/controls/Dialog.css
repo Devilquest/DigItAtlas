@@ -1,0 +1,64 @@
+.dialog {
+  max-width: min(520px, calc(100vw - var(--space-4) * 2));
+  max-height: min(720px, calc(100vh - var(--space-4) * 4));
+  padding: var(--space-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-panel);
+  background: var(--surface-bar);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog::backdrop {
+  background: var(--scrim);
+}
+
+.dialog-wide {
+  max-width: min(720px, calc(100vw - var(--space-4) * 2));
+}
+
+.dialog-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.dialog-title {
+  margin: 0;
+}
+
+.dialog-body {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  gap: var(--space-2);
+  overflow-y: auto;
+}
+
+.dialog-body p {
+  margin: 0;
+}
+
+.dialog-body dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+}
+
+.dialog-body dt {
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.dialog-body dd {
+  margin: 0;
+}

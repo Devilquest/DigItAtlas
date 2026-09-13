@@ -1,0 +1,62 @@
+/* ===== The guide ===== */
+
+/* Loose enough that a keycap sits inside its line instead of against the ones above and below it. */
+.guide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  line-height: 1.8;
+}
+
+.guide p {
+  margin: 0;
+}
+
+.guide-heading {
+  margin: 0 0 var(--space-1);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.guide-key {
+  padding: 1px var(--space-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-row);
+  background: var(--fill-control);
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.guide-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.guide-link:hover {
+  color: var(--accent);
+}
+
+.guide-closing {
+  color: var(--text-muted);
+}
+
+/* ===== The destination labels ===== */
+
+.dialog-body dl.guide-colors {
+  align-items: center;
+  margin-top: var(--space-3);
+  row-gap: var(--space-3);
+}
+
+.guide-tag {
+  display: block;
+  image-rendering: pixelated;
+}

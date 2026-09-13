@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <title>Dig It! Atlas</title>
+    <!-- The loading screen is drawn here, not by the application, so it paints before one byte of it. -->
+    <style>
+      :root {
+        --surface-base: #0b0d12;
+        --accent: #6ea8ff;
+        --accent-line: rgb(110 168 255 / 35%);
+        --text-primary: #e9ecf2;
+        --text-faint: #5b6273;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: var(--surface-base);
+      }
+
+      .loading {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        align-items: center;
+        justify-content: center;
+        padding: 14px;
+        background: var(--surface-base);
+        font-family: Inter, 'Segoe UI', system-ui, -apple-system, sans-serif;
+      }
+
+      /* A height of its own, so the wordmark below holds still while the squares scale. */
+      .loading-pulse {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        height: 32px;
+      }
+
+      .loading-pulse span {
+        width: 22px;
+        height: 22px;
+        border-radius: 3px;
+        background: var(--accent);
+        animation: loading-pulse 1.05s ease-in-out infinite;
+      }
+
+      .loading-pulse span:nth-child(2) {
+        animation-delay: 150ms;
+      }
+
+      .loading-pulse span:nth-child(3) {
+        animation-delay: 300ms;
+      }
+
+      @keyframes loading-pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(0.82);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1.12);
+          box-shadow: 0 0 10px var(--accent-line);
+        }
+      }
+
+      .loading-mark {
+        margin: 0;
+        color: var(--text-primary);
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      .loading-caption {
+        margin: 0;
+        color: var(--text-faint);
+        font-size: 12px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .loading-pulse span {
+          animation: none;
+          opacity: 0.75;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="splash" class="loading" role="status">
+      <div class="loading-pulse" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <p class="loading-mark">Dig It! Atlas</p>
+      <p class="loading-caption">Loading…</p>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

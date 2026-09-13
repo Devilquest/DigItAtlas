@@ -1,0 +1,94 @@
+/* ===== Surfaces ===== */
+
+:root {
+  /* The void the map floats in. */
+  --surface-base: #0b0d12;
+  /* Panels, over the map that is blurred behind them. */
+  --surface-panel: rgb(20 23 31 / 74%);
+  /* The bar and the menus, denser than a panel because they sit over anything. */
+  --surface-bar: rgb(17 20 27 / 92%);
+  /* What a surface does to the map behind it. */
+  --glass: blur(16px) saturate(1.3);
+  /* Every edge between two surfaces. */
+  --border: rgb(255 255 255 / 10%);
+  /* The edge of a surface that floats clear of everything, which needs to read against the map. */
+  --border-strong: rgb(255 255 255 / 16%);
+  --shadow: 0 10px 40px rgb(0 0 0 / 45%);
+  /* What a modal lays over the page it covers. */
+  --scrim: rgb(0 0 0 / 55%);
+}
+
+/* ===== Fills ===== */
+
+:root {
+  /* A field or a closed control, at rest. */
+  --fill-control: rgb(255 255 255 / 5%);
+  /* Anything transparent under the pointer: a row of a list, a button of the bar or of a menu. */
+  --fill-hover: rgb(255 255 255 / 7%);
+  /* The same, for a control that already carries a fill or a border of its own. */
+  --fill-hover-raised: rgb(255 255 255 / 8%);
+  /* The scrollbar's thumb, and what it becomes under the pointer. */
+  --thumb: rgb(255 255 255 / 20%);
+  --thumb-hover: rgb(255 255 255 / 32%);
+}
+
+/* ===== Text ===== */
+
+:root {
+  /* Body text, labels and panel contents. */
+  --text-primary: #e9ecf2;
+  /* Secondary readouts: coordinates, counts, the identity line. */
+  --text-muted: #939bab;
+  /* Third rank: placeholders, group headings, the build line. */
+  --text-faint: #5b6273;
+  /* Selection, focus rings, and the active state of a control. */
+  --accent: #6ea8ff;
+  /* What an active control is filled with. */
+  --accent-soft: rgb(110 168 255 / 16%);
+  /* And the edge around that fill. */
+  --accent-line: rgb(110 168 255 / 35%);
+  /* What a focused field is tinted with, which is fainter than an active control's fill. */
+  --accent-tint: rgb(110 168 255 / 7%);
+  /* Text and shapes drawn on a solid accent fill, which stays dark whatever the theme behind it does. */
+  --text-on-accent: #0b1018;
+  /* The author's own link, under the pointer, which the desktop tools of this family draw too. */
+  --author-hover: #00e143;
+  /* The heart in the About dialog's author attribution. */
+  --heart: #e74c3c;
+}
+
+/* ===== Spacing and shape ===== */
+
+:root {
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 10px;
+  --space-4: 14px;
+  /* A panel or a dialog. */
+  --radius-panel: 12px;
+  /* A button, a field, a menu. */
+  --radius-control: 8px;
+  /* A row inside a panel. */
+  --radius-row: 6px;
+  --bar-height: 44px;
+  /* The Levels panel's width, which is also what the Filters panel is placed beside. */
+  --panel-levels-width: 262px;
+  /* The right-hand rail's width, and so the width of every panel it stacks. */
+  --panel-rail-width: 226px;
+  /* How long a panel takes to open or close, and how long Presence holds a closing one mounted. */
+  --panel-motion: 150ms;
+  /* How long a button takes to reach the color it wears under the pointer. */
+  --hover-motion: 100ms;
+  /* How long a map may take to arrive before the window says one is coming. */
+  --busy-delay: 160ms;
+}
+
+/* ===== Where the map cannot be blurred behind a surface ===== */
+
+@supports not (backdrop-filter: blur(1px)) {
+  :root {
+    --surface-panel: #141720;
+    --surface-bar: #11141b;
+    --glass: none;
+  }
+}

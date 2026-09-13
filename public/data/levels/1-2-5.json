@@ -1,0 +1,1 @@
+{"collision":"maps/1-2-5.c.webp","id":"1-2-5","links":[{"at":[240,149],"label":"Substage 2","tag":"substage-2-amber","tagAt":[184,146],"to":"1-2-2"}],"look":"w1d","objects":{"dig-spot-exit":[[240,149]],"gem-17":[[120,100],[137,114],[154,114],[174,114],[188,100]],"player-spawn":[[40,110,1]],"shovel":[[151,86]]},"size":[320,220],"stem":"LVL014","terrain":"maps/1-2-5.webp"}

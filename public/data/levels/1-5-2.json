@@ -1,0 +1,1 @@
+{"collision":"maps/1-5-2.c.webp","id":"1-5-2","links":[{"at":[239,96],"label":"Substage 3","tag":"substage-3-amber","tagAt":[184,93],"to":"1-5-4"}],"look":"w1h","objects":{"dig-spot-exit":[[239,96]],"player-spawn":[[40,133,1]],"spring-boots":[[108,115]]},"size":[320,220],"stem":"LVL041","terrain":"maps/1-5-2.webp"}

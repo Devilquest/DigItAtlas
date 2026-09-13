@@ -1,0 +1,36 @@
+.icon-buttons {
+  display: flex;
+  gap: 1px;
+  align-items: center;
+  align-self: center;
+}
+
+.icon-buttons-split {
+  width: 1px;
+  height: 12px;
+  margin: 0 var(--space-1);
+  background: var(--border);
+}
+
+.icon-button {
+  display: grid;
+  width: 22px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-row);
+  background: none;
+  color: var(--text-muted);
+  place-items: center;
+  cursor: pointer;
+}
+
+.icon-button:hover:enabled {
+  background: var(--fill-hover);
+  color: var(--text-primary);
+}
+
+.icon-button:disabled {
+  color: var(--text-faint);
+  cursor: default;
+}

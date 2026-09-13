@@ -1,0 +1,53 @@
+.hover-tip {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface-panel);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.hover-tip-position,
+.hover-tip-size {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.hover-tip-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  max-width: 240px;
+  margin-top: 2px;
+  white-space: normal;
+  color: var(--text-muted);
+}
+
+.hover-tip-note-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.hover-tip-goesto {
+  color: var(--accent);
+}

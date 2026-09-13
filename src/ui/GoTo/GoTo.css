@@ -1,0 +1,73 @@
+.goto {
+  position: fixed;
+  top: 18vh;
+  left: 50%;
+  width: min(460px, calc(100vw - var(--space-4) * 2));
+  max-height: 60vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-panel);
+  background: var(--surface-bar);
+  box-shadow: var(--shadow);
+  color: var(--text-primary);
+  font: inherit;
+  transform: translateX(-50%);
+}
+
+.goto[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.goto::backdrop {
+  background: var(--scrim);
+}
+
+.goto-search-pad {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: none;
+  border-bottom: 1px solid var(--border);
+}
+
+.goto-input {
+  width: 100%;
+  padding: var(--space-3) calc(var(--space-4) + 24px) var(--space-3) var(--space-4);
+  border: 0;
+  background: none;
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.goto-input::placeholder {
+  color: var(--text-faint);
+}
+
+.goto-input:focus {
+  outline: none;
+}
+
+.goto-clear {
+  position: absolute;
+  top: 50%;
+  right: var(--space-3);
+  transform: translateY(-50%);
+}
+
+.goto-results {
+  overflow: auto;
+  padding: var(--space-2);
+}
+
+.goto-row {
+  padding: var(--space-2) var(--space-3);
+}
+
+.goto-empty {
+  padding: var(--space-3);
+  color: var(--text-faint);
+  text-align: center;
+}

@@ -1,0 +1,12 @@
+.map-view {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-base);
+  cursor: grab;
+  touch-action: none;
+}
+
+.map-view:active {
+  cursor: grabbing;
+}

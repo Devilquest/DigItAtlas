@@ -1,0 +1,85 @@
+.bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  height: var(--bar-height);
+  padding: 0 var(--space-3);
+  background: var(--surface-bar);
+  border-bottom: 1px solid var(--border);
+}
+
+.bar-gap {
+  flex: 1;
+}
+
+.bar-identity {
+  overflow: hidden;
+  color: var(--text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-identity strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.bar-readout {
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-group {
+  display: flex;
+  flex: none;
+  gap: 2px;
+  align-items: center;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+}
+
+.bar-button {
+  min-width: 34px;
+  height: 26px;
+  padding: 0 var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-row);
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.bar-button svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.bar-button:hover:not(:disabled) {
+  background: var(--fill-hover);
+  color: var(--text-primary);
+}
+
+.bar-button:disabled {
+  color: var(--text-faint);
+  cursor: default;
+}
+
+.bar-button[aria-pressed='true'] {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.bar-zoom-value {
+  display: grid;
+  min-width: 56px;
+  place-items: center;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}

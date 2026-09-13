@@ -1,0 +1,11 @@
+.minimap-panel {
+  flex: none;
+  margin-top: auto;
+  transform-origin: bottom right;
+}
+
+.minimap-canvas {
+  display: block;
+  width: 100%;
+  cursor: crosshair;
+}

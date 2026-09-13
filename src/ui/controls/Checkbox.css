@@ -1,0 +1,50 @@
+.checkbox {
+  display: flex;
+  flex: 1;
+  gap: var(--space-2);
+  align-items: center;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.checkbox-box {
+  display: grid;
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  color: var(--text-on-accent);
+  place-items: center;
+}
+
+.checkbox-box[data-state='off'] > svg {
+  visibility: hidden;
+}
+
+.checkbox-box[data-state='on'],
+.checkbox-box[data-state='mixed'] {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.checkbox-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.checkbox:focus-visible {
+  outline: none;
+}
+
+.checkbox:focus-visible .checkbox-box {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
