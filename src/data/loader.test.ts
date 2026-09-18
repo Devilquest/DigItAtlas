@@ -49,7 +49,7 @@ describe('levelScene', () => {
     const completeIndex = exitLayer.placements.findIndex(([x, y]) => x === 139 && y === 57);
     expect(completeIndex).toBeGreaterThanOrEqual(0);
     const completeObject = exitLayer.objects[completeIndex]!;
-    expect(completeObject.goesTo).toBe('Level complete');
+    expect(completeObject.goesTo).toBe('World Map');
     expect(completeObject.to).toEqual({ kind: 'world', n: 1 });
 
     // In the overlay tags:
@@ -69,6 +69,13 @@ describe('levelScene', () => {
     expect(amberTagLayer.objects[0]?.label).toBe('Exit Destination Info');
     expect(amberTagLayer.objects[0]?.goesTo).toBe('Substage 2');
     expect(amberTagLayer.objects[0]?.to).toEqual({ kind: 'level', id: '1-5-3' });
+
+    const redTagLayer = scene.layers.find((layer) => layer.id === 'tag:level-complete-red')!;
+    expect(redTagLayer).toBeDefined();
+    expect(redTagLayer.spatial).toBe(false);
+    expect(redTagLayer.objects[0]?.label).toBe('Exit Destination Info');
+    expect(redTagLayer.objects[0]?.goesTo).toBe('World Map');
+    expect(redTagLayer.objects[0]?.to).toEqual({ kind: 'world', n: 1 });
   });
 
   it('names bonus destination overlays and marks them as non-spatial', () => {

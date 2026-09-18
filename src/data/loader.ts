@@ -13,7 +13,7 @@ import { nodeKey, nodeOf, worldOf } from '../domain/mapId';
 import { linkDestination, nodeDestination } from '../domain/route';
 import type { Route } from '../domain/route';
 import { drawableIn } from '../domain/types';
-import type { Catalog, Level, LevelIndex, WorldMap } from '../domain/types';
+import type { Catalog, Level, LevelIndex, Link, WorldMap } from '../domain/types';
 import { tint } from '../engine/renderer';
 import type { Scene, SceneLayer } from '../engine/renderer';
 import { themeColor } from '../engine/theme';
@@ -130,6 +130,15 @@ function drawLast(catalog: Catalog, id: string): number {
   return catalog.types[id]?.group === FOREGROUND_GROUP ? 1 : 0;
 }
 
+/** Navigation target and tooltip destination text for a link. */
+function linkDestinationInfo(link: Link, levelId: string, world: number): { goesTo: string; to?: Route } {
+  const loops = link.to === levelId;
+  const destination = link.to == null ? 'World Map' : link.label;
+  const goesTo = loops ? `${destination} (this level)` : destination;
+  const to = loops ? undefined : linkDestination(link, world);
+  return { goesTo, ...(to && { to }) };
+}
+
 /** Builds a level's scene, in the order the layers are drawn. */
 export function levelScene(
   level: Level,
@@ -154,10 +163,7 @@ export function levelScene(
       const link = level.links.find((entry) => entry.at[0] === at[0] && entry.at[1] === at[1]);
       const base = type.note ? { label: type.label, note: type.note } : { label: type.label };
       if (!link) return base;
-      const loops = link.to === level.id;
-      const goesTo = loops ? `${link.label} (this level)` : link.label;
-      const to = loops ? undefined : linkDestination(link, world);
-      return { ...base, goesTo, ...(to && { to }) };
+      return { ...base, ...linkDestinationInfo(link, level.id, world) };
     });
     layers.push({ id, image, w: form.w, h: form.h, placements, objects });
     // The footprint is the same cell at the same anchor, so it shares the object's placements outright and
@@ -188,16 +194,10 @@ export function levelScene(
       w: entry.w,
       h: entry.h,
       placements: carried.map((link) => link.tagAt),
-      objects: carried.map((link) => {
-        const loops = link.to === level.id;
-        const goesTo = loops ? `${link.label} (this level)` : link.label;
-        const to = loops ? undefined : linkDestination(link, world);
-        return {
-          label: tagLabel,
-          goesTo,
-          ...(to && { to }),
-        };
-      }),
+      objects: carried.map((link) => ({
+        label: tagLabel,
+        ...linkDestinationInfo(link, level.id, world),
+      })),
       spatial: false,
       silent: true,
     });
