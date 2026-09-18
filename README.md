@@ -4,7 +4,7 @@
 
 **Maps every Dig It! level in the browser, with layers, entity positions, and interactive navigation.**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](#changelog)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](#changelog)
 [![License: MIT](https://img.shields.io/badge/License-MIT-f59e0b.svg)](LICENSE)
 [![Live Site](https://img.shields.io/badge/Live%20Site-Visit-10b981.svg)](https://devilquest.github.io/DigItAtlas/)
 ![React](https://img.shields.io/badge/React-19-61dafb.svg?logo=react&logoColor=white)
@@ -278,6 +278,11 @@ Future roadmap considerations:
 ---
 
 ## Changelog
+
+### [1.0.1]
+- **Fixed**: Same-level maze exits now use the help cursor without canvas navigation and clarify their destination with `(this level)` in tooltips.
+- **Fixed**: Level completion exits and destination overlays now specify `World Map` as their destination route in tooltips.
+- **Added**: Identity labels and destination metadata to `Exit Destination Info` and `Bonus Destination Info` overlays on hover.
 
 ### [1.0.0]
 - **Added**: Initial release.
