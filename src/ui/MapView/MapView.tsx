@@ -233,8 +233,10 @@ export default function MapView({
       ...(object.label !== undefined && {
         info: {
           label: object.label,
-          position: objectPosition(placement[0], placement[1]),
-          size: spriteSize(layer.w, layer.h, { w: shown.w, h: shown.h }),
+          ...(layer.spatial !== false && {
+            position: objectPosition(placement[0], placement[1]),
+            size: spriteSize(layer.w, layer.h, { w: shown.w, h: shown.h }),
+          }),
           ...(object.note && { note: object.note }),
           ...(object.goesTo && { goesTo: object.goesTo }),
         },

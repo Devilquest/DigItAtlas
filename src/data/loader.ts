@@ -181,6 +181,7 @@ export function levelScene(
     const image = entry && tags.get(entry.sprite);
     if (!entry || !image) continue;
     const carried = level.links.filter((link) => link.tag === tag);
+    const tagLabel = entry.kind === 'bonus' ? 'Bonus Destination Info' : 'Exit Destination Info';
     labels.push({
       id: tagLayer(tag),
       image,
@@ -188,9 +189,16 @@ export function levelScene(
       h: entry.h,
       placements: carried.map((link) => link.tagAt),
       objects: carried.map((link) => {
-        const to = link.to === level.id ? undefined : linkDestination(link, world);
-        return to ? { to } : {};
+        const loops = link.to === level.id;
+        const goesTo = loops ? `${link.label} (this level)` : link.label;
+        const to = loops ? undefined : linkDestination(link, world);
+        return {
+          label: tagLabel,
+          goesTo,
+          ...(to && { to }),
+        };
       }),
+      spatial: false,
       silent: true,
     });
   }

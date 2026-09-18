@@ -53,15 +53,39 @@ describe('levelScene', () => {
     expect(completeObject.to).toEqual({ kind: 'world', n: 1 });
 
     // In the overlay tags:
-    // substage-1-gray tags loop back to the same level and must carry no destination route.
+    // substage-1-gray tags loop back to the same level, carry no destination route, and omit spatial bounds.
     const grayTagLayer = scene.layers.find((layer) => layer.id === 'tag:substage-1-gray')!;
     expect(grayTagLayer).toBeDefined();
+    expect(grayTagLayer.spatial).toBe(false);
     for (const obj of grayTagLayer.objects) {
+      expect(obj.label).toBe('Exit Destination Info');
+      expect(obj.goesTo).toBe('Substage 1 (this level)');
       expect(obj.to).toBeUndefined();
     }
 
     const amberTagLayer = scene.layers.find((layer) => layer.id === 'tag:substage-2-amber')!;
     expect(amberTagLayer).toBeDefined();
+    expect(amberTagLayer.spatial).toBe(false);
+    expect(amberTagLayer.objects[0]?.label).toBe('Exit Destination Info');
+    expect(amberTagLayer.objects[0]?.goesTo).toBe('Substage 2');
     expect(amberTagLayer.objects[0]?.to).toEqual({ kind: 'level', id: '1-5-3' });
+  });
+
+  it('names bonus destination overlays and marks them as non-spatial', () => {
+    const level154 = read<Level>('levels/1-5-4.json');
+    const tags = new Map<string, HTMLImageElement>([
+      ['bonus-1-green.webp', dummyPicture],
+      ['substage-2-amber.webp', dummyPicture],
+      ['substage-3-gray.webp', dummyPicture],
+    ]);
+
+    const scene = levelScene(level154, pictures, catalog, new Map(), tags);
+
+    const bonusTagLayer = scene.layers.find((layer) => layer.id === 'tag:bonus-1-green')!;
+    expect(bonusTagLayer).toBeDefined();
+    expect(bonusTagLayer.spatial).toBe(false);
+    expect(bonusTagLayer.objects[0]?.label).toBe('Bonus Destination Info');
+    expect(bonusTagLayer.objects[0]?.goesTo).toBe('Bonus 1');
+    expect(bonusTagLayer.objects[0]?.to).toEqual({ kind: 'level', id: '1-5-2' });
   });
 });

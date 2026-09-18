@@ -4,8 +4,8 @@ import './HoverTip.css';
 /** What the tooltip says about the object the pointer is over. */
 export interface HoverTipInfo {
   label: string;
-  position: string;
-  size: string;
+  position?: string;
+  size?: string;
   note?: string;
   goesTo?: string;
 }
@@ -41,8 +41,8 @@ export default function HoverTip({
   return (
     <div className="hover-tip glass" style={{ ...horizontal, top }}>
       <strong>{info.label}</strong>
-      <span className="hover-tip-position">{info.position}</span>
-      <span className="hover-tip-size">{info.size}</span>
+      {info.position && <span className="hover-tip-position">{info.position}</span>}
+      {info.size && <span className="hover-tip-size">{info.size}</span>}
       {info.note && (
         <span className="hover-tip-note">
           <span className="hover-tip-note-mark" aria-hidden="true">
