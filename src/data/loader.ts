@@ -112,7 +112,7 @@ async function fetchMapFile(route: Route): Promise<Fetched<MapFile>> {
 }
 
 /** The two pictures a map is drawn from, in the order its scene overlays them. */
-type Pictures = [terrain: HTMLImageElement, over: HTMLImageElement];
+export type Pictures = [terrain: HTMLImageElement, over: HTMLImageElement];
 
 function loadPictures(file: MapFile): Promise<Fetched<Pictures>> {
   const [terrain, over] =
@@ -131,7 +131,7 @@ function drawLast(catalog: Catalog, id: string): number {
 }
 
 /** Builds a level's scene, in the order the layers are drawn. */
-function levelScene(
+export function levelScene(
   level: Level,
   [terrain, collision]: Pictures,
   catalog: Catalog,
@@ -153,7 +153,11 @@ function levelScene(
     const objects = placements.map((at) => {
       const link = level.links.find((entry) => entry.at[0] === at[0] && entry.at[1] === at[1]);
       const base = type.note ? { label: type.label, note: type.note } : { label: type.label };
-      return link ? { ...base, goesTo: link.label, to: linkDestination(link, world) } : base;
+      if (!link) return base;
+      const loops = link.to === level.id;
+      const goesTo = loops ? `${link.label} (this level)` : link.label;
+      const to = loops ? undefined : linkDestination(link, world);
+      return { ...base, goesTo, ...(to && { to }) };
     });
     layers.push({ id, image, w: form.w, h: form.h, placements, objects });
     // The footprint is the same cell at the same anchor, so it shares the object's placements outright and
@@ -183,7 +187,10 @@ function levelScene(
       w: entry.w,
       h: entry.h,
       placements: carried.map((link) => link.tagAt),
-      objects: carried.map((link) => ({ to: linkDestination(link, world) })),
+      objects: carried.map((link) => {
+        const to = link.to === level.id ? undefined : linkDestination(link, world);
+        return to ? { to } : {};
+      }),
       silent: true,
     });
   }
