@@ -418,6 +418,16 @@ describe('every level', () => {
     }
   });
 
+  it('paints a label gray exactly where its exit loops back to the same level', () => {
+    for (const level of levels.values()) {
+      for (const link of level.links) {
+        expect(link.tag.endsWith('-gray'), `${level.id} -> ${link.to} (${link.tag})`).toBe(
+          link.to === level.id,
+        );
+      }
+    }
+  });
+
   it('labels every exit with a tag that says what the link says, drawn inside the map', () => {
     for (const level of levels.values()) {
       for (const link of level.links) {
