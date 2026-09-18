@@ -26,6 +26,8 @@ export interface SceneLayer {
   hoverable?: boolean;
   /** True for a layer that is clicked but never named, and that yields the pointer to any named object. */
   silent?: boolean;
+  /** False for an overlay layer whose tooltip omits map position and dimensions. */
+  spatial?: boolean;
 }
 
 /** A picture covering the whole map, drawn over the terrain: a collision plane, a walk path. */
